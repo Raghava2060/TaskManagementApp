@@ -1,0 +1,97 @@
+﻿@model TaskManagementApp.DTOs.TaskDto
+
+@{
+    ViewData["Title"] = "Create Task";
+}
+
+<h1>Create Task</h1>
+
+<hr />
+
+<form asp-action="Create" method="post">
+
+    <div class="form-group mb-3">
+        <label asp-for="TaskDescription" class="form-label">
+            Task Description
+        </label>
+
+        <input asp-for="TaskDescription"
+               class="form-control" />
+
+        <span asp-validation-for="TaskDescription"
+              class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="StartDate" class="form-label">
+            Start Date
+        </label>
+
+        <input asp-for="StartDate"
+               type="date"
+               class="form-control" />
+
+        <span asp-validation-for="StartDate"
+              class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="ExpectedClosureDate" class="form-label">
+            Expected Closure Date
+        </label>
+
+        <input asp-for="ExpectedClosureDate"
+               type="date"
+               class="form-control" />
+
+        <span asp-validation-for="ExpectedClosureDate"
+              class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="AssignedTo" class="form-label">
+            Assigned To
+        </label>
+
+        <input asp-for="AssignedTo"
+               class="form-control" />
+
+        <span asp-validation-for="AssignedTo"
+              class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="CompletionStatus" class="form-label">
+            Completion Status
+        </label>
+
+        <select asp-for="CompletionStatus"
+                class="form-control">
+
+            <option value="">-- Select Status --</option>
+            <option value="Not Started">Not Started</option>
+            <option value="In Progress">In Progress</option>
+            <option value="Completed">Completed</option>
+
+        </select>
+
+        <span asp-validation-for="CompletionStatus"
+              class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">
+        Create Task
+    </button>
+
+    <a asp-action="Index"
+       class="btn btn-secondary">
+        Back to List
+    </a>
+
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

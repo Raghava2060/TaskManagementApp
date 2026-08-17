@@ -1,0 +1,63 @@
+﻿@model IEnumerable<TaskManagementApp.DTOs.TaskDto>
+
+@{
+    ViewData["Title"] = "Tasks";
+}
+
+<h1>Task Management</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New Task</a>
+</p>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Task ID</th>
+            <th>Description</th>
+            <th>Start Date</th>
+            <th>Expected Closure</th>
+            <th>Assigned To</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var task in Model)
+        {
+            <tr>
+                <td>@task.TaskId</td>
+                <td>@task.TaskDescription</td>
+                <td>@task.StartDate</td>
+                <td>@task.ExpectedClosureDate</td>
+                <td>@task.AssignedTo</td>
+                <td>@task.CompletionStatus</td>
+
+                <td>
+                    <a asp-action="Details"
+                       asp-route-id="@task.TaskId"
+                       class="btn btn-info btn-sm">
+                        Details
+                    </a>
+
+                    <a asp-action="Edit"
+                       asp-route-id="@task.TaskId"
+                       class="btn btn-warning btn-sm">
+                        Edit
+                    </a>
+
+                    <form asp-action="Delete"
+                          asp-route-id="@task.TaskId"
+                          method="post"
+                          style="display:inline;">
+                        <button type="submit"
+                                class="btn btn-danger btn-sm">
+                            Delete
+                        </button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

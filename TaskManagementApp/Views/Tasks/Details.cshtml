@@ -1,0 +1,72 @@
+﻿@model TaskManagementApp.DTOs.TaskDto
+
+@{
+    ViewData["Title"] = "Task Details";
+}
+
+<h1>Task Details</h1>
+
+<hr />
+
+<div class="card">
+    <div class="card-body">
+
+        <dl class="row">
+
+            <dt class="col-sm-3">
+                Task ID
+            </dt>
+            <dd class="col-sm-9">
+                @Model.TaskId
+            </dd>
+
+            <dt class="col-sm-3">
+                Task Description
+            </dt>
+            <dd class="col-sm-9">
+                @Model.TaskDescription
+            </dd>
+
+            <dt class="col-sm-3">
+                Start Date
+            </dt>
+            <dd class="col-sm-9">
+                @Model.StartDate
+            </dd>
+
+            <dt class="col-sm-3">
+                Expected Closure Date
+            </dt>
+            <dd class="col-sm-9">
+                @Model.ExpectedClosureDate
+            </dd>
+
+            <dt class="col-sm-3">
+                Assigned To
+            </dt>
+            <dd class="col-sm-9">
+                @Model.AssignedTo
+            </dd>
+
+            <dt class="col-sm-3">
+                Completion Status
+            </dt>
+            <dd class="col-sm-9">
+                @Model.CompletionStatus
+            </dd>
+
+        </dl>
+
+        <a asp-action="Edit"
+           asp-route-id="@Model.TaskId"
+           class="btn btn-warning">
+            Edit
+        </a>
+
+        <a asp-action="Index"
+           class="btn btn-secondary">
+            Back to List
+        </a>
+
+    </div>
+</div>
